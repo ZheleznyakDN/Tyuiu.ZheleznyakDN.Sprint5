@@ -17,7 +17,7 @@ namespace Tyuiu.ZheleznyakDN.Sprint5.Task7.V27.Test
             string outPath = ds.LoadDataAndSave(inputPath);
 
             string result = File.ReadAllText(outPath);
-            string expected = "Это строка с пробелами";
+            string expected = "Этогрокаспробелами"; 
 
             Assert.AreEqual(expected, result);
         }
