@@ -10,24 +10,31 @@ namespace Tyuiu.ZheleznyakDN.Sprint5.Task5.V29.Lib
             string content = File.ReadAllText(path);
             string[] numbers = content.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-            int? minTwoDigit = null;
+            int minTwoDigit = int.MaxValue;
+            bool found = false;
 
             foreach (string numStr in numbers)
             {
-                double value = Convert.ToDouble(
+                double number = Convert.ToDouble(
                     numStr.Replace(',', '.'),
                     CultureInfo.InvariantCulture);
 
-                int rounded = (int)Math.Round(value);
+                int intNumber = (int)Math.Round(number);
 
-                if (Math.Abs(rounded) >= 10 && Math.Abs(rounded) <= 99)
+                if (intNumber >= 10 && intNumber <= 99)
                 {
-                    if (minTwoDigit == null || rounded < minTwoDigit.Value)
-                        minTwoDigit = rounded;
+                    if (!found || intNumber < minTwoDigit)
+                    {
+                        minTwoDigit = intNumber;
+                        found = true;
+                    }
                 }
             }
 
-            return minTwoDigit ?? 0;
+            if (!found)
+                return 0;
+
+            return minTwoDigit;
         }
     }
 }

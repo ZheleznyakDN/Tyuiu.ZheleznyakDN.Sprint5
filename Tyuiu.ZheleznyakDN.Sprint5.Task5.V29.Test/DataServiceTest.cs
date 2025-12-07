@@ -23,7 +23,7 @@ namespace Tyuiu.ZheleznyakDN.Sprint5.Task5.V29.Test
 
             double result = ds.LoadFromDataFile(path);
 
-            Assert.AreEqual(-10, result);
+            Assert.AreEqual(11, result);
         }
     }
 }
