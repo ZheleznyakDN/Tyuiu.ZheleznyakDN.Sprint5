@@ -13,7 +13,8 @@ namespace Tyuiu.ZheleznyakDN.Sprint5.Task7.V27.Lib
             string text = File.ReadAllText(path);
             string result = RemoveExtraSpaces(text);
 
-            string outPath = GetOutputPath(path);
+            // Сохраняем во временную папку с правами доступа
+            string outPath = Path.Combine(Path.GetTempPath(), "OutPutDataFileTask7V27.txt");
             File.WriteAllText(outPath, result);
 
             return outPath;
@@ -42,12 +43,6 @@ namespace Tyuiu.ZheleznyakDN.Sprint5.Task7.V27.Lib
             }
 
             return sb.ToString();
-        }
-
-        private string GetOutputPath(string inputPath)
-        {
-            string directory = Path.GetDirectoryName(inputPath);
-            return Path.Combine(directory, "OutPutDataFileTask7V27.txt");
         }
     }
 }
